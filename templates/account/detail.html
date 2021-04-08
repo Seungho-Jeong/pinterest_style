@@ -1,0 +1,49 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+<div>
+    <div style="text-align: center; max-width: 500px; margin: 4rem auto;">
+
+        <!--  기본 정보  -->
+        <p>{{ target_user.date_joined }}</p>
+
+        <!--  프로필 정보  -->
+        {% if target_user.profile %}
+        <img src="{{ target_user.profile.profile_image.url }}" alt="User Profile Image"
+             style="height: 12rem; width: 12rem; border-radius: 20rem; margin-bottom: 2rem; object-fit: cover;">
+        <h2>
+            {{ target_user.profile.nickname }}
+        </h2>
+        <h5 style="margin-bottom: 3rem;">
+            {{ target_user.profile.message }}
+        </h5>
+
+        <!--  프로필 변경  -->
+        {% if target_user == user %}
+        <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">프로필 변경</a>
+        {% endif %}
+
+        <!--  프로필 생성  -->
+        {% else %}
+        {% if target_user == user %}
+        <a href="{% url 'profileapp:create' %}">
+            <h2>프로필 생성</h2>
+        </a>
+        {% else %}
+            <h2>닉네임 미설정</h2>
+        {% endif %}
+        {% endif %}
+
+        <!--  회원정보 변경 및 탈퇴  -->
+        {% if target_user == user %}
+        <a href="{% url 'accountapp:update' pk=target_user.pk %}"><p>비밀번호 변경</p></a>
+        <a href="{% url 'accountapp:delete' pk=target_user.pk %}"><p>회원탈퇴</p></a>
+        {% endif %}
+    </div>
+    <div>
+        {% include 'snippets/list_fragment.html' with article_list=object_list %}
+    </div>
+</div>
+
+{% endblock %}
