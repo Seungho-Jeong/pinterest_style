@@ -2,11 +2,13 @@
 
     <!-- Title logo -->
     <div>
-        <h1 class="logo">My Toy Project Blog</h1>
+        <a href="{% url 'articleapp:list' %}">
+            <h1 class="logo">Pinterest Style Blog</h1>
+        </a>
     </div>
 
     <!-- Navbar -->
-    <div class="header_navbar">
+    <div class="header_navbar" style="font-family:'NanumSquareOTFRegular;">
 
         <!-- 공통 표시 -->
         <a href="{% url 'articleapp:list' %}" class="header_nav">
