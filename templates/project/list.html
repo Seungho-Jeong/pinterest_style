@@ -27,7 +27,7 @@
 </style>
 
 {% if project_list %}
-  <div class="container">
+  <div class="container" style="font-family:'NanumSquareOTFRegular">
     {% for project in project_list %}
     <a href="{% url 'projectapp:detail' pk=project.pk %}">
       {% include 'snippets/card_project.html' with project=project %}
