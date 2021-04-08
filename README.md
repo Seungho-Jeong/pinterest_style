@@ -11,8 +11,8 @@ MVT 패턴을 활용하여 제작되었으며 타일 형태의 이미지 레이�
 ## 💻 Packages & Libraries
 - Django
 - Bootstrap
-- Django-bootstrap4
-- Magic grid
-- Medium editor
+- [Django-bootstrap4](https://github.com/zostera/django-bootstrap4)
+- [Magic grid](https://github.com/e-oj/Magic-Grid)
+- [Medium editor](https://github.com/yabwe/medium-editor)
 - Pillow
 - Google fonts & icons
