@@ -141,8 +141,8 @@ STATICFILES_DIRS = [                                    # 정적파일을 저장
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_REDIRECT_URL = reverse_lazy('accountapp:hello_world')     # 로그인 후 리디렉션할 라우팅경로 (우선순위 Next -> redirect)
-LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')          # 로그아웃 후 리디렉션할 라우팅경로
+LOGIN_REDIRECT_URL = reverse_lazy('home')               # 로그인 후 리디렉션할 라우팅경로 (우선순위 Next -> redirect)
+LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')  # 로그아웃 후 리디렉션할 라우팅경로
 
 
 MEDIA_URL = '/media/'                          # 사진 등 미디어파일을 저장할 url

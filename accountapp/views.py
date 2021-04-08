@@ -4,33 +4,13 @@ from django.contrib.auth.models import User
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
 from django.views.generic.list import MultipleObjectMixin
 
 from accountapp.decorators import account_ownership_required
 from accountapp.forms import AccountUpdateForm
-from accountapp.models import HelloWorld
 from articleapp.models import Article
 
 has_ownership = [account_ownership_required, login_required]
-
-
-@login_required
-def hello_world(request):
-
-    if request.method == "POST":                        # FBV, POST 메소드인 경우
-        temp = request.POST.get('hello_world_input')    # request.POST 중에서 'hello_world_input Name의 값을 get해라
-
-        new_hello_world = HelloWorld()
-        new_hello_world.text = temp
-        new_hello_world.save()
-
-        return HttpResponseRedirect('accountapp:hello_world')   # 포스트를 렌더로 리턴하면 리프레쉬마다 동일한 Value 계속 전송
-
-    else:
-        hello_world_list = HelloWorld.objects.all()
-        return render(request, 'account/hello_world.html', context={'hello_world_list': hello_world_list})
 
 
 class AccountCreateView(CreateView):
