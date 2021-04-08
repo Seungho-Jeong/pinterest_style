@@ -25,4 +25,5 @@ urlpatterns = [
     path('articles/', include('articleapp.urls')),
     path('comments/', include('commentapp.urls')),
     path('projects/', include('projectapp.urls')),
+    path('subscribe/', include('subscribeapp.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)   # 미디어와 미디어 루트를 연결(미연결 시 이미지 로드 안됨)
