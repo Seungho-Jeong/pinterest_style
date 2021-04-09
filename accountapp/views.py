@@ -16,7 +16,7 @@ has_ownership = [account_ownership_required, login_required]
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm                           # 사용할 폼
-    success_url = reverse_lazy('accountapp:hello_world')    # success 시 리디렉션할 url
+    success_url = reverse_lazy('articleapp:detail')    # success 시 리디렉션할 url
     template_name = 'account/create.html'                   # 사용할 템플릿
 
 
