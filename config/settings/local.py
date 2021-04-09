@@ -1,4 +1,3 @@
-import my_settings
 from .base import *
 
 # SECURITY WARNING: keep the secret key used in production secret!
