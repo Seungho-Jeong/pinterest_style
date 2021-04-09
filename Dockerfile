@@ -10,6 +10,8 @@ RUN pip install -r requirements.txt
 
 RUN pip install gunicorn
 
+RUN pip install pillow
+
 RUN echo "SECRET_KEY = 'django-insecure-f_2sbl5+rcjp^oqpweq3#ezq)lca4f3hx%no#=0(#0a=pal5*6'" > my_settings.py
 
 RUN python manage.py migrate
