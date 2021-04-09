@@ -16,7 +16,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'pinterest_style',
         'USER': 'pinterest_style',
-        'PASSWORD': 'abc135!!',
+        'PASSWORD': 'abc12345',
         'HOST': 'mariadb',
         'PORT': '3306',
     }
