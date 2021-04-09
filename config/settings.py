@@ -130,7 +130,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')     # 정적파일(CSS 등)을 저장할 루트 설정
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')     # 정적파일(CSS 등)을 저장할 루트 설정(collectstatic 시 저장되는 경로)
 STATICFILES_DIRS = [                                    # 정적파일을 저장할 디렉토리 설정
     BASE_DIR / "static",
 ]
