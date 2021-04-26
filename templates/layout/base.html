@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+{% include 'layout/head.html' %}
+
+<body>
+    {% include 'layout/header.html' %}
+
+    <hr>
+
+    {% for message in messages %}
+    <div class="text-center">
+        <div class="btn btn-{{ message.tags }} rounded-pill px-5 my-5">
+            {{ message }}
+        </div>
+    </div>
+    {% endfor %}
+
+    {% block content %}
+    {% endblock %}
+    <hr>
+
+    {% include 'layout/footer.html' %}
+</body>
+
+</html>

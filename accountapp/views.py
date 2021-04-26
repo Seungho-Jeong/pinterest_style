@@ -1,0 +1,51 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.utils.decorators import method_decorator
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.urls import reverse_lazy, reverse
+from django.views.generic.list import MultipleObjectMixin
+
+from accountapp.decorators import account_ownership_required
+from accountapp.forms import AccountUpdateForm
+from articleapp.models import Article
+
+has_ownership = [account_ownership_required, login_required]
+
+
+class AccountCreateView(CreateView):
+    model = User
+    form_class = UserCreationForm                           # 사용할 폼
+    success_url = reverse_lazy('accountapp:login')    # success 시 리디렉션할 url
+    template_name = 'account/create.html'                   # 사용할 템플릿
+
+
+class AccountDetailView(DetailView, MultipleObjectMixin):
+    model = User
+    context_object_name = 'target_user'
+    template_name = 'account/detail.html'
+    
+    def get_context_data(self, **kwargs):
+        object_list = Article.objects.filter(writer=self.get_object())
+        return super(AccountDetailView, self).get_context_data(object_list=object_list, **kwargs)
+
+
+@method_decorator(has_ownership, 'get')     # method_decorator : 데코레이터를 메소드별로 사용할 수 있음
+@method_decorator(has_ownership, 'post')
+class AccountUpdateView(UpdateView):
+    model = User
+    context_object_name = 'target_user'
+    form_class = AccountUpdateForm
+    template_name = 'account/update.html'
+
+    def get_success_url(self):
+        return reverse('accountapp:detail', kwargs={'pk': self.object.pk})
+
+
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post')
+class AccountDeleteView(DeleteView):
+    model = User
+    context_object_name = 'target_user'
+    success_url = reverse_lazy('articleapp:list')
+    template_name = 'account/delete.html'

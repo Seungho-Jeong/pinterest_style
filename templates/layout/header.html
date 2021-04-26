@@ -1,0 +1,47 @@
+<div class="header">
+
+    <!-- Title logo -->
+    <div>
+        <a href="{% url 'articleapp:list' %}">
+            <h1 class="logo">Pinterest Style Site</h1>
+        </a>
+    </div>
+
+    <!-- Navbar -->
+    <div class="header_navbar" style="font-family:'NanumSquareOTFRegular;">
+
+        <!-- 공통 표시 -->
+        <a href="{% url 'articleapp:list' %}" class="header_nav">
+            <span>Articles</span>
+        </a>
+
+        <a href="{% url 'projectapp:list' %}" class="header_nav">
+            <span>Projects</span>
+        </a>
+
+        <!-- 로그인 정보가 없는 경우 -->
+        {% if not user.is_authenticated %}
+        <a href="{% url 'accountapp:login' %}" class="header_nav">
+            <span>Login</span>
+        </a>
+
+        <a href="{% url 'accountapp:create' %}" class="header_nav">
+            <span>Sign Up</span>
+        </a>
+
+        <!-- 로그인 정보가 있는 경우 -->
+        {% else %}
+        <a href="{% url 'subscribeapp:list' %}" class="header_nav">
+            <span>Subscription</span>
+        </a>
+        <a href="{% url 'accountapp:detail' pk=user.pk %}" class="header_nav">
+            <span>My Page</span>
+        </a>
+
+        <a href="{% url 'accountapp:logout' %}" class="header_nav">
+            <span>Logout</span>
+        </a>
+        {% endif %}
+
+    </div>
+</div>
