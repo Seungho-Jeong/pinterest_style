@@ -1,8 +1,7 @@
-import my_settings
 from .base import *
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = my_settings.SECRET_KEY
+SECRET_KEY = 'django-insecure-f_2sbl5+rcjp^oqpweq3#ezq)lca4f3hx%no#=0(#0a=pal5*6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -15,6 +14,6 @@ ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
     }
 }
